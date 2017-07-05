@@ -162,6 +162,10 @@ public class MeasureActivity extends Activity {
     private int mHeartRate;
     // 血氧
     private int mBloodOxygen = 0;
+    // 高压值
+    private int mBloodPressureHigh = 0;
+    // 低压值
+    private int mBloodPressureLow = 0;
 
     private boolean mIsHeartRateCanSet = true;
 
@@ -202,8 +206,8 @@ public class MeasureActivity extends Activity {
     private void initView() {
         m_TvLabel = (TextView) findViewById(com.bupt.heartarea.R.id.tv_data_measure);
         m_IvHeart = (ImageView) findViewById(com.bupt.heartarea.R.id.iv_heart_measure);
-        m_TvBloodPressureH= (TextView) findViewById(R.id.tv_bloodpressure_high);
-        m_TvBloodPressureL= (TextView) findViewById(R.id.tv_bloodpressure_low);
+        m_TvBloodPressureH = (TextView) findViewById(R.id.tv_bloodpressure_high);
+        m_TvBloodPressureL = (TextView) findViewById(R.id.tv_bloodpressure_low);
 
         m_HeartDrawable = new TwinkleDrawable(m_IvHeart);
         m_HeartDrawable.addDrawable(getResources().getDrawable(com.bupt.heartarea.R.drawable.ic_heart_big), true);
@@ -490,8 +494,8 @@ public class MeasureActivity extends Activity {
                 }
                 if (mIsHeartRateCanSet) {
                     m_TvLabel.setText(mRealTimeHeartRate + "");
-                    m_TvBloodPressureH.setText(String.valueOf(mRealTimeBloodPressureHigh)+"mmHg");
-                    m_TvBloodPressureL.setText(String.valueOf(mRealTimeBloodPressureLow)+"mmHg");
+                    m_TvBloodPressureH.setText(String.valueOf(mRealTimeBloodPressureHigh));
+                    m_TvBloodPressureL.setText(String.valueOf(mRealTimeBloodPressureLow));
                     Log.i("m_TvLabel", "设了一次实时心率值：" + mRealTimeHeartRate);
 
                 }
@@ -594,6 +598,8 @@ public class MeasureActivity extends Activity {
                             int[] bloodpressure = Bloodpressure.calculate(data_origin);
                             mMeasureData.setBlood_pressure_high(bloodpressure[0]);
                             mMeasureData.setBlood_pressure_low(bloodpressure[1]);
+                            mBloodPressureHigh = bloodpressure[0];
+                            mBloodPressureLow = bloodpressure[1];
 
                         }
                     }).start();
@@ -910,6 +916,8 @@ public class MeasureActivity extends Activity {
                                 bundle.putString("alert", alert);
                                 bundle.putInt("heart_rate", mHeartRate);
                                 bundle.putInt("blood_oxygen", mBloodOxygen);
+                                bundle.putInt("blood_pressure_high", mBloodPressureHigh);
+                                bundle.putInt("blood_pressure_low", mBloodPressureLow);
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                                 finish();
@@ -922,6 +930,8 @@ public class MeasureActivity extends Activity {
                             bundle.putString("alert", "");
                             bundle.putInt("heart_rate", mHeartRate);
                             bundle.putInt("blood_oxygen", mBloodOxygen);
+                            bundle.putInt("blood_pressure_high", mBloodPressureHigh);
+                            bundle.putInt("blood_pressure_low", mBloodPressureLow);
                             intent.putExtras(bundle);
                             startActivity(intent);
                             finish();

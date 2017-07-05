@@ -58,61 +58,58 @@
                 style="@style/HeartRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_data_measure"
-                android:layout_centerHorizontal="true"
+                android:layout_alignBottom="@+id/tv_data_measure"
+                android:layout_alignRight="@+id/tv_data_measure"
+                android:layout_marginRight="-25dp"
                 android:layout_marginTop="-5dp"
                 android:text="bps"
                 android:textSize="30sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_data_measure"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="血压:"
+                    android:textColor="@color/text_white"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tv_bloodpressure_low"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00"
+                    android:textColor="@color/text_white"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textColor="@color/text_white"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tv_bloodpressure_high"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00"
+                    android:textColor="@color/text_white"
+                    android:textSize="22sp" />
+
+            </LinearLayout>
 
         </RelativeLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="高压:"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_bloodpressure_high"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="低压:"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_bloodpressure_low"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout1"

@@ -26,6 +26,7 @@ import com.bupt.heartarea.ui.CircleIndicator;
 import com.bupt.heartarea.ui.LineIndicator;
 import com.bupt.heartarea.R;
 import com.bupt.heartarea.ui.IndicatorItem;
+import com.bupt.heartarea.ui.NumberAnimTextView;
 import com.bupt.heartarea.utils.GlobalData;
 import com.google.gson.Gson;
 
@@ -50,15 +51,19 @@ public class ResultActivity extends Activity implements View.OnClickListener {
     CircleIndicator ci1;
     LineIndicator mLiHeartRateProgress;
     LineIndicator mLiBloodOxygenProgress;
+    NumberAnimTextView mAnimTvBloodPressureHigh;
+    NumberAnimTextView mAnimTvBloodPressureLow;
 
     private int mHeartRate = 0;
     private int mFatigue = 0;
     private int mBloodOxygen = 0;
+    private int mBloodPressureHigh = 0;
+    private int mBloodPressureLow = 0;
     int mMiddleColor;
     int mLowColor;
     int mHighColor;
     int mFeedBackValue = 1;
-    int mSuccess=0;
+    int mSuccess = 0;
     String mAlert;
     Button mBtnFeedBackYes;
     Button mBtnFeedBackNo;
@@ -75,6 +80,8 @@ public class ResultActivity extends Activity implements View.OnClickListener {
         mHeartRate = bundle.getInt("heart_rate");
         mFatigue = bundle.getInt("pressure");
         mBloodOxygen = bundle.getInt("blood_oxygen");
+        mBloodPressureHigh = bundle.getInt("blood_pressure_high");
+        mBloodPressureLow = bundle.getInt("blood_pressure_low");
 
         mAlert = bundle.getString("alert");
 
@@ -97,7 +104,12 @@ public class ResultActivity extends Activity implements View.OnClickListener {
         mBtnFeedBackNo = (Button) findViewById(R.id.btn_result_no);
         mBtnFeedBackNo.setOnClickListener(this);
 
-        mLlFeedBackAll= (LinearLayout) findViewById(R.id.ll_result_feedback_all);
+        mLlFeedBackAll = (LinearLayout) findViewById(R.id.ll_result_feedback_all);
+
+        mAnimTvBloodPressureHigh = (NumberAnimTextView) findViewById(R.id.animtv_blood_presssure_high);
+        mAnimTvBloodPressureLow = (NumberAnimTextView) findViewById(R.id.animtv_blood_presssure_low);
+        mAnimTvBloodPressureHigh.setNumberString(String.valueOf(mBloodPressureHigh));
+        mAnimTvBloodPressureLow.setNumberString(String.valueOf(mBloodPressureLow));
 
     }
 
@@ -254,7 +266,7 @@ public class ResultActivity extends Activity implements View.OnClickListener {
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        feedBack(0,mFeedBackValue);
+                        feedBack(0, mFeedBackValue);
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -271,7 +283,7 @@ public class ResultActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_result_yes:
-                feedBack(1,0);
+                feedBack(1, 0);
                 break;
             case R.id.btn_result_no:
                 showRadioButtonDialog();
@@ -281,6 +293,7 @@ public class ResultActivity extends Activity implements View.OnClickListener {
 
     /**
      * 向服务器发送用户反馈信息
+     *
      * @param success
      * @param status
      */
@@ -295,9 +308,8 @@ public class ResultActivity extends Activity implements View.OnClickListener {
                         ResponseBean responseBean = gson.fromJson(s, ResponseBean.class);
 
 
-                        if (responseBean!=null) {
-                            if (responseBean.getCode()==0)
-                            {
+                        if (responseBean != null) {
+                            if (responseBean.getCode() == 0) {
 //                                Toast.makeText(ResultActivity.this, responseBean.getMsg(), Toast.LENGTH_LONG).show();
 
                                 LemonBubble.getRightBubbleInfo()// 增加无限点语法修改bubbleInfo的特性
@@ -309,14 +321,11 @@ public class ResultActivity extends Activity implements View.OnClickListener {
                                 mLlFeedBackAll.setVisibility(View.GONE);
 
 
-                            }
-                            else
-                            {
+                            } else {
                                 Toast.makeText(ResultActivity.this, responseBean.getMsg(), Toast.LENGTH_LONG).show();
                             }
 
-                        }else
-                        {
+                        } else {
                             Toast.makeText(ResultActivity.this, "解析失败", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -326,14 +335,14 @@ public class ResultActivity extends Activity implements View.OnClickListener {
                 Log.e("请求失败", volleyError.getMessage(), volleyError);
                 Toast.makeText(ResultActivity.this, "连接服务器失败，请检查网络", Toast.LENGTH_SHORT).show();
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() {
                 //在这里设置需要post的参数
                 Map<String, String> map = new HashMap<>();
                 map.put("userid", GlobalData.userid);
-                map.put("success",String.valueOf(success));
-                map.put("status",String.valueOf(status));
+                map.put("success", String.valueOf(success));
+                map.put("status", String.valueOf(status));
 
                 return map;
             }
