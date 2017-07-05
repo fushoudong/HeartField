@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF4F4EC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+
+        <com.bupt.heartarea.ui.CircleIndicator
+            android:id="@+id/ci_1"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="40dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="心率值"
+            android:textSize="18sp"
+            android:textColor="@color/text_green"/>
+
+        <com.bupt.heartarea.ui.LineIndicator
+            android:id="@+id/li_progress_heart_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="血氧值"
+            android:textSize="18sp"
+            android:textColor="@color/text_green"/>
+
+        <com.bupt.heartarea.ui.LineIndicator
+            android:id="@+id/li_progress_blood_oxygen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/ll_result_feedback_all">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="疲劳度是否符合您当前真实状态"
+                android:textSize="18sp"
+                android:textColor="@color/text_green"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                >
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:id="@+id/btn_result_yes"
+                    android:background="@drawable/btn_login"
+                    android:layout_marginRight="5dp"
+                    android:text="准确"
+                    android:textColor="@color/text_green"/>
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:id="@+id/btn_result_no"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/btn_no"
+                    android:text="不准确"
+                    android:textColor="@color/text_red"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>
