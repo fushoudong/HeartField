@@ -2,6 +2,8 @@ package com.bupt.heartarea.activity;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -220,8 +222,24 @@ public class MeasureActivity extends Activity {
 //        m_ProgressWheel.setMax(4 * AXISXMAX - 10);
     }
 
+    /**
+     * 计算实时心率 血压
+     *
+     * @return
+     */
     private boolean calRealTimeHeartRate() {
         int size = mRealTimeDatas.size();
+
+        List<Double> realtime_data_origin_copy_list = new ArrayList<>(mRealTimeDatas);
+        for (int i = 0; i < 20; i++)
+            realtime_data_origin_copy_list.remove(0);
+        for (int i = 0; i < 10; i++)
+            realtime_data_origin_copy_list.remove(realtime_data_origin_copy_list.size() - 1);
+
+        double[] realtime_data_origin_copy_array = new double[realtime_data_origin_copy_list.size()];
+        for (int i = 0; i < realtime_data_origin_copy_list.size(); i++)
+            realtime_data_origin_copy_array[i] = realtime_data_origin_copy_list.get(i);
+
         double[] realtime_data_origin = new double[size];
         for (int i = 0; i < size; i++) {
             realtime_data_origin[i] = mRealTimeDatas.get(i);
@@ -261,7 +279,7 @@ public class MeasureActivity extends Activity {
         mRealTimeHeartRate = CalHeartRate.calHeartRate(peaksList, INTERVAL);
         Log.i("real time heartRate", mRealTimeHeartRate + "");
 
-        int[] bloodpressure = Bloodpressure.calculate(realtime_data_smoothed_array);
+        int[] bloodpressure = Bloodpressure.calculate(realtime_data_origin_copy_array);
         mRealTimeBloodPressureHigh = bloodpressure[0];
         mRealTimeBloodPressureLow = bloodpressure[1];
         return true;
@@ -571,6 +589,18 @@ public class MeasureActivity extends Activity {
                     for (int i = 0; i < data_origin_list.size(); i++) {
                         data_origin[i] = data_origin_list.get(i);
                     }
+
+                    final List<Double> data_origin_copy_list = new ArrayList<>(data_origin_list);
+                    for (int i = 0; i < 20; i++)
+                        data_origin_copy_list.remove(0);
+                    for (int i = 0; i < 10; i++)
+                        data_origin_copy_list.remove(data_origin_copy_list.size() - 1);
+
+                    final double[] data_origin_copy = new double[data_origin_copy_list.size()];
+                    for (int i = 0; i < data_origin_copy_list.size(); i++)
+                        data_origin_copy[i] = data_origin_copy_list.get(i);
+
+
                     double[] data_smoothed = new double[data_origin_list.size()];
 
                     // SG算法的参数矩阵
@@ -595,7 +625,9 @@ public class MeasureActivity extends Activity {
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            int[] bloodpressure = Bloodpressure.calculate(data_origin);
+
+
+                            int[] bloodpressure = Bloodpressure.calculate(data_origin_copy);
                             mMeasureData.setBlood_pressure_high(bloodpressure[0]);
                             mMeasureData.setBlood_pressure_low(bloodpressure[1]);
                             mBloodPressureHigh = bloodpressure[0];

@@ -49,8 +49,8 @@ import java.util.Map;
  */
 public class HistoryActivity extends Activity implements View.OnClickListener {
     // 端口号为8080
-//    private static final String URL_HISTORY = GlobalData.URL_HEAD + ":8080/detect3/HistoryServlet";
-    private static final String URL_HISTORY = GlobalData.URL_HEAD + ":8080/detect3/HistorySer";
+    private static final String URL_HISTORY = GlobalData.URL_HEAD + ":8080/detect3/HistoryServlet";
+    //    private static final String URL_HISTORY = GlobalData.URL_HEAD + ":8080/detect3/HistorySer";
     RadioGroup mRadioGroup;
     RadioButton mRbDay;
     RadioButton mRbWeek;
@@ -76,6 +76,7 @@ public class HistoryActivity extends Activity implements View.OnClickListener {
     String[] pressure_suggestions = {"心理压力低", "心理压力中等", "心理压力高"};
     String[] blood_oxygten_suggestions = {"血氧含量低", "血氧含量中等", "血压含量高"};
     String[] heartrate_suggestions = {"心率慢", "心率正常", "心率快"};
+    String[] blood_pressure_suggestions = {"血压水平低", "血压正常", "血压水平高"};
     String[] colors = {"#d948637f", "#d970a975", "#d9a67260"};
     private int mIndex = 0;
 
@@ -231,16 +232,16 @@ public class HistoryActivity extends Activity implements View.OnClickListener {
                     int low = item.getBlood_pressure_low();
                     int high = item.getBlood_pressure_high();
                     map.put("value", item.getBlood_pressure_low() + "/" + item.getBlood_pressure_high());
-//                    if (pressure < 30) {
-//                        map.put("suggestion", pressure_suggestions[0]);
-//                        map.put("color", colors[0]);
-//                    } else if (pressure < 70) {
-//                        map.put("suggestion", pressure_suggestions[1]);
-//                        map.put("color", colors[1]);
-//                    } else {
-                    map.put("suggestion", pressure_suggestions[2]);
-                    map.put("color", colors[2]);
-//                    }
+                    if (high > 130 || low > 90) {
+                        map.put("suggestion", blood_pressure_suggestions[2]);
+                        map.put("color", colors[2]);
+                    } else if (high < 110 || low < 70) {
+                        map.put("suggestion", blood_pressure_suggestions[0]);
+                        map.put("color", colors[0]);
+                    } else {
+                        map.put("suggestion", blood_pressure_suggestions[1]);
+                        map.put("color", colors[1]);
+                    }
                     break;
 
             }
@@ -289,6 +290,8 @@ public class HistoryActivity extends Activity implements View.OnClickListener {
                                         bean.setHeart_rate(temp.getInt("heart_rate"));
                                         bean.setBlood_oxygen(temp.getInt("blood_oxygen"));
                                         bean.setPressure(temp.getInt("pressure"));
+                                        bean.setBlood_pressure_high(temp.optInt("blood_pressure_high", 0));
+                                        bean.setBlood_pressure_low(temp.optInt("blood_pressure_low", 0));
                                         mHistoryDataItemList.add(bean);
                                     }
                                     GlobalData.historyDataItemBeanList = new ArrayList<>(mHistoryDataItemList);
@@ -577,8 +580,7 @@ class MyAdapter extends BaseAdapter {
             holder.tv_date = (TextView) convertView.findViewById(R.id.item_tv_day);
             holder.tv_time = (TextView) convertView.findViewById(R.id.item_tv_time);
             holder.tv_number = (TextView) convertView.findViewById(R.id.item_tv_value);
-            if(GlobalData.currenttype== GlobalData.MeasureType.BLOOD_PRESSURE)
-            {
+            if (GlobalData.currenttype == GlobalData.MeasureType.BLOOD_PRESSURE) {
                 holder.tv_number.setTextSize(16);
             }
             holder.tv_text = (TextView) convertView.findViewById(R.id.item_tv_suggetion);

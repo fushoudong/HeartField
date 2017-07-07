@@ -1,7 +1,7 @@
 package com.bupt.heartarea.bloodpressure;
 
 public class MovingAverageFilter {
-	private static final int WINDOWS = 1;
+    private static final int WINDOWS = 1;
     private double[] mTemp = null; // ֻ������ʱ����ʼ��,������¼���ò�����ֵ����ĵ�
     private double[] mBufout = null;
     private int mWindowSize = WINDOWS;
@@ -39,7 +39,7 @@ public class MovingAverageFilter {
                     mWindowSize - 1);
             return mBufout;
         } else {
-           double[] bufadd = new double[buf.length + mTemp.length];
+            double[] bufadd = new double[buf.length + mTemp.length];
             mBufout = new double[bufadd.length - mWindowSize + 1];
             System.arraycopy(mTemp, 0, bufadd, 0, mTemp.length);
             System.arraycopy(buf, 0, bufadd, mTemp.length, buf.length); // ��temp��bufƴ�ӵ�һ��
