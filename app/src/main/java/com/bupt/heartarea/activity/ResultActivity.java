@@ -3,13 +3,13 @@ package com.bupt.heartarea.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,25 +21,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bupt.heartarea.R;
 import com.bupt.heartarea.bean.ResponseBean;
 import com.bupt.heartarea.ui.CircleIndicator;
-import com.bupt.heartarea.ui.LineIndicator;
-import com.bupt.heartarea.R;
 import com.bupt.heartarea.ui.IndicatorItem;
+import com.bupt.heartarea.ui.LineIndicator;
 import com.bupt.heartarea.ui.NumberAnimTextView;
 import com.bupt.heartarea.utils.GlobalData;
 import com.google.gson.Gson;
 
 import net.lemonsoft.lemonbubble.LemonBubble;
-import net.lemonsoft.lemonhello.LemonHello;
-import net.lemonsoft.lemonhello.LemonHelloAction;
-import net.lemonsoft.lemonhello.LemonHelloInfo;
-import net.lemonsoft.lemonhello.LemonHelloView;
-import net.lemonsoft.lemonhello.adapter.LemonHelloEventDelegateAdapter;
-import net.lemonsoft.lemonhello.interfaces.LemonHelloActionDelegate;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,6 +50,8 @@ public class ResultActivity extends Activity implements View.OnClickListener {
     private int mBloodOxygen = 0;
     private int mBloodPressureHigh = 0;
     private int mBloodPressureLow = 0;
+    private int mBloodPressureLowFeedBack = 0;
+    private int mBloodPressureHighFeedBack = 0;
     int mMiddleColor;
     int mLowColor;
     int mHighColor;
@@ -228,7 +221,7 @@ public class ResultActivity extends Activity implements View.OnClickListener {
         View radiobuttonview;       //使用view来接入方法写出的dialog，方便相关初始化
         LayoutInflater inflater;        //引用自定义dialog布局
         inflater = LayoutInflater.from(ResultActivity.this);
-        radiobuttonview = (LinearLayout) inflater.inflate(R.layout.radiogroup_feedback, null);                                           //那个layout就是我们可以dialog自定义的布局啦
+        radiobuttonview = (LinearLayout) inflater.inflate(R.layout.radiogroup_feedback, null);
         final RadioGroup radiogroup = (RadioGroup) radiobuttonview.findViewById(R.id.rg_feedback);
         final RadioButton radioButton1 = (RadioButton) radiobuttonview.findViewById(R.id.rb_pressure_1);
         final RadioButton radioButton2 = (RadioButton) radiobuttonview.findViewById(R.id.rb_pressure_2);
@@ -258,6 +251,9 @@ public class ResultActivity extends Activity implements View.OnClickListener {
 
             }
         });
+        final EditText etBloodPressureHigh = (EditText) radiobuttonview.findViewById(R.id.et_feedback_bp_high);
+        final EditText etBloodPressureLow = (EditText) radiobuttonview.findViewById(R.id.et_feedback_bp_low);
+
 
         radiogroup.check(R.id.rb_pressure_3);
 
@@ -266,7 +262,20 @@ public class ResultActivity extends Activity implements View.OnClickListener {
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        feedBack(0, mFeedBackValue);
+                        String high_value = etBloodPressureHigh.getText().toString().trim();
+                        String low_value = etBloodPressureLow.getText().toString().trim();
+                        if (!high_value.isEmpty())
+                            mBloodPressureHighFeedBack = Integer.valueOf(high_value);
+                        if (!low_value.isEmpty())
+                            mBloodPressureLowFeedBack = Integer.valueOf(low_value);
+                        if (mBloodPressureHighFeedBack > 300 || mBloodPressureHighFeedBack < 0
+                                || mBloodPressureLowFeedBack > 300 || mBloodPressureLowFeedBack < 0
+                                || mBloodPressureLowFeedBack >= mBloodPressureHighFeedBack) {
+                            Toast.makeText(ResultActivity.this, "请输入合法的数值", Toast.LENGTH_SHORT).show();
+                            showRadioButtonDialog();
+                        } else {
+                            feedBack(0, mFeedBackValue);
+                        }
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -283,6 +292,7 @@ public class ResultActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_result_yes:
+
                 feedBack(1, 0);
                 break;
             case R.id.btn_result_no:
@@ -343,6 +353,9 @@ public class ResultActivity extends Activity implements View.OnClickListener {
                 map.put("userid", GlobalData.userid);
                 map.put("success", String.valueOf(success));
                 map.put("status", String.valueOf(status));
+                map.put("blood_pressure_high_feedback", String.valueOf(mBloodPressureHighFeedBack));
+                map.put("blood_pressure_low_feedback", String.valueOf(mBloodPressureLowFeedBack));
+                System.out.println(map.toString());
 
                 return map;
             }
