@@ -67,8 +67,8 @@ import cn.aigestudio.datepicker.views.DatePicker2;
 public class MainPageFragment extends Fragment implements OnClickListener {
     private static final String URL_NEWS = "http://www.tngou.net/api/info/list?rows=3";
     private static final String URL_DETAILS = "http://www.tngou.net/info/show/";
-    private static final String URL_GETSIGNEDDATE = GlobalData.URL_HEAD+":8080/detect3/SignInMonth";
-    private static final String URL_POSTSIGNEDDATE = GlobalData.URL_HEAD+":8080/detect3/SignIn";
+    private static final String URL_GETSIGNEDDATE = GlobalData.URL_HEAD + ":8080/detect3/SignInMonth";
+    private static final String URL_POSTSIGNEDDATE = GlobalData.URL_HEAD + ":8080/detect3/SignIn";
     private View view;
     // 广告
     private ViewPager viewPager;
@@ -188,7 +188,7 @@ public class MainPageFragment extends Fragment implements OnClickListener {
             public void onClick(View v) {
 
 //                showSignDialog();
-                  getSignedDateAndShowSignDialog();
+                getSignedDateAndShowSignDialog();
 
 
             }
@@ -332,11 +332,14 @@ public class MainPageFragment extends Fragment implements OnClickListener {
         // 判断今日是否签到过
         if (mSignedDateList != null) {
             int length = mSignedDateList.size();
-            String last = mSignedDateList.get(length - 1);
-            if (last.equals(mYear + "-" + mMonth + "-" + mDay)) {
-                mIsSigned = true;
-            } else {
-                mIsSigned = false;
+            if (length > 0)
+            {
+                String last = mSignedDateList.get(length - 1);
+                if (last.equals(mYear + "-" + mMonth + "-" + mDay)) {
+                    mIsSigned = true;
+                } else {
+                    mIsSigned = false;
+                }
             }
 
         } else {
@@ -496,7 +499,6 @@ public class MainPageFragment extends Fragment implements OnClickListener {
 
     /**
      * 向服务器请求用户的签到日期
-     *
      */
     private void getSignedDateAndShowSignDialog() {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
@@ -507,7 +509,7 @@ public class MainPageFragment extends Fragment implements OnClickListener {
                         Gson gson = new Gson();
 
 
-                        Log.d("onResponse",s);
+                        Log.d("onResponse", s);
                         ResponseBean responseBean = gson.fromJson(s, ResponseBean.class);
 
 
@@ -519,8 +521,7 @@ public class MainPageFragment extends Fragment implements OnClickListener {
                                     if (jsonObject.has("signed_date")) {
                                         String str = jsonObject.getString("signed_date").trim();
                                         mSignedDateList.clear();
-                                        if(str!=null&&!str.equals(""))
-                                        {
+                                        if (!str.isEmpty()) {
                                             String[] date_array = str.split(",");
                                             for (int i = 0; i < date_array.length; i++) {
 
@@ -552,7 +553,7 @@ public class MainPageFragment extends Fragment implements OnClickListener {
                 Log.e("请求失败", volleyError.getMessage(), volleyError);
                 Toast.makeText(getActivity(), "获取签到日期失败，请检查网络", Toast.LENGTH_SHORT).show();
 
-                String str="2017-05-01,2017-05-02,2017-05-03,2017-05-04,2017-05-05";
+                String str = "2017-05-01,2017-05-02,2017-05-03,2017-05-04,2017-05-05";
                 String[] date_array = str.split(",");
                 mSignedDateList.clear();
                 for (int i = 0; i < date_array.length; i++) {
@@ -582,7 +583,6 @@ public class MainPageFragment extends Fragment implements OnClickListener {
 
     /**
      * 向服务器发送用户本次签到请求
-     *
      */
     private void setSignedDateToServer(final DatePicker2 picker) {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());

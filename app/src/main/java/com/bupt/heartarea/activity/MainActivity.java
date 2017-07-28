@@ -1,14 +1,11 @@
 package com.bupt.heartarea.activity;
 
 import android.Manifest;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -22,14 +19,13 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.bupt.heartarea.fragment.HistroyFragment;
 import com.bupt.heartarea.fragment.MainPageFragment;
 import com.bupt.heartarea.fragment.MeasureFragment;
 import com.bupt.heartarea.fragment.MineFragment;
 import com.bupt.heartarea.fragment.NewsFragment;
 import com.bupt.heartarea.ui.AlphaIndicator;
 import com.bupt.heartarea.ui.AlphaView;
-import com.bupt.heartarea.fragment.HistroyFragment;
-import com.bupt.heartarea.utils.DownloadUtil;
 
 import net.lemonsoft.lemonhello.LemonHello;
 import net.lemonsoft.lemonhello.LemonHelloAction;
