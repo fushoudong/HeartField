@@ -67,8 +67,8 @@ import cn.aigestudio.datepicker.views.DatePicker2;
 public class MainPageFragment extends Fragment implements OnClickListener {
     private static final String URL_NEWS = "http://www.tngou.net/api/info/list?rows=3";
     private static final String URL_DETAILS = "http://www.tngou.net/info/show/";
-    private static final String URL_GETSIGNEDDATE = GlobalData.URL_HEAD + ":8080/detect3/SignInMonth";
-    private static final String URL_POSTSIGNEDDATE = GlobalData.URL_HEAD + ":8080/detect3/SignIn";
+    private static final String URL_GETSIGNEDDATE = GlobalData.URL_HEAD+":8080/detect3/SignInMonth";
+    private static final String URL_POSTSIGNEDDATE = GlobalData.URL_HEAD+":8080/detect3/SignIn";
     private View view;
     // 广告
     private ViewPager viewPager;
@@ -193,6 +193,7 @@ public class MainPageFragment extends Fragment implements OnClickListener {
 
             }
         });
+
 
         // 第一步：初始化ViewPager
         viewPager = (ViewPager) view.findViewById(R.id.vp_advertise);
@@ -505,11 +506,10 @@ public class MainPageFragment extends Fragment implements OnClickListener {
             startActivity(intent);
         }
 
-    }
-
 
     /**
      * 向服务器请求用户的签到日期
+     *
      */
     private void getSignedDateAndShowSignDialog() {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
@@ -532,7 +532,8 @@ public class MainPageFragment extends Fragment implements OnClickListener {
                                     if (jsonObject.has("signed_date")) {
                                         String str = jsonObject.getString("signed_date").trim();
                                         mSignedDateList.clear();
-                                        if (!str.isEmpty()) {
+                                        if(str!=null&&!str.equals(""))
+                                        {
                                             String[] date_array = str.split(",");
                                             for (int i = 0; i < date_array.length; i++) {
 
@@ -594,6 +595,7 @@ public class MainPageFragment extends Fragment implements OnClickListener {
 
     /**
      * 向服务器发送用户本次签到请求
+     *
      */
     private void setSignedDateToServer(final DatePicker2 picker) {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
