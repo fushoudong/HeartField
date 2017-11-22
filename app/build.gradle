@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         // 收集数据版
-        applicationId "com.bupt.heartarea"
+        applicationId "com.bupt.heartarealinear"
         // 用户版
 //        applicationId "com.bupt.heartarea"
         minSdkVersion 14
@@ -26,15 +26,17 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.lzy.widget:view-core:0.1.5'
-    compile files('libs/achartengine-1.0.0.jar')
+//    compile files('libs/achartengine-1.0.0.jar')
     compile project(':DatePicker')
     compile project(':hellocharts-library')
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:cardview-v7:25.0.0'
-    compile files('libs/volley.jar')
+//    compile files('libs/volley.jar')
     compile 'com.android.support:support-v4:26.0.0-alpha1'
-    //    compile 'com.github.1em0nsOft:LemonBubble4Android:1.0.9'
-    compile files('libs/lemon-hello.jar')
-    compile files('libs/lemon-bubble.jar')
+//    compile files('libs/lemon-hello.jar')
+//    compile files('libs/lemon-bubble.jar')
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'//Retrofit2所需要的包
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'//ConverterFactory的Gson依赖包
+    compile 'com.squareup.retrofit2:converter-scalars:2.0.0-beta4'//ConverterFactory的String依赖包
 }

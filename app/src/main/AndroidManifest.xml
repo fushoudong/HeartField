@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 在SDCard中创建与删除文件权限 -->
     <application
+        android:name=".HeartAreaApplication"
         android:allowBackup="true"
 
         android:icon="@drawable/icon_main"

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.volley.Request;
@@ -31,8 +32,8 @@ public class LogoActivity extends Activity {
     private String mPassword;
     private boolean mIsLoginSuccess = true;
 
-//    private static final String URL_LOGIN = "http://101.200.89.170:9000/capp/login/normal";
-    private static final String URL_LOGIN = GlobalData.URL_HEAD+":8080/detect3/LoginServlet";
+    //    private static final String URL_LOGIN = "http://101.200.89.170:9000/capp/login/normal";
+    private static final String URL_LOGIN = GlobalData.URL_HEAD + ":8080/detect3/LoginServlet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +47,14 @@ public class LogoActivity extends Activity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
-                            login();
+                            load();
+                            if (TextUtils.isEmpty(mUsername) || TextUtils.isEmpty(mPassword)) {
+                                // 跳转到登录界面
+                                startActivity(new Intent(LogoActivity.this, LoginActivity.class));
+                                finish();
+                            } else {
+                                login();
+                            }
 
 
                         }
@@ -82,32 +89,30 @@ public class LogoActivity extends Activity {
                         if (responseBean.getCode() == 0) {
                             // 跳转到主界面
 //                            startActivity(new Intent(LogoActivity.this, MainActivity.class));
-                            String jsonString =  responseBean.getBody();
+                            String jsonString = responseBean.getBody();
                             try {
                                 JSONObject jsonObject = new JSONObject(jsonString);
                                 if (jsonObject.has("username"))
-                                    GlobalData.username=jsonObject.getString("username");
+                                    GlobalData.username = jsonObject.getString("username");
                                 if (jsonObject.has("userid"))
-                                    GlobalData.userid=(jsonObject.getString("userid"));
+                                    GlobalData.userid = (jsonObject.getString("userid"));
                                 if (jsonObject.has("sex"))
-                                    GlobalData.sex=(jsonObject.getInt("sex"));
+                                    GlobalData.sex = (jsonObject.getInt("sex"));
                                 if (jsonObject.has("birthday"))
-                                    GlobalData.birthday=(jsonObject.getString("birthday"));
+                                    GlobalData.birthday = (jsonObject.getString("birthday"));
                                 if (jsonObject.has("tel"))
-                                    GlobalData.tel=(jsonObject.getString("tel"));
+                                    GlobalData.tel = (jsonObject.getString("tel"));
                                 if (jsonObject.has("iscompletedinfo"))
-                                    GlobalData.is_complete_info=(jsonObject.getInt("iscompletedinfo"));
+                                    GlobalData.is_complete_info = (jsonObject.getInt("iscompletedinfo"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
 
-                            if (GlobalData.is_complete_info==1)
-                            {
+                            if (GlobalData.is_complete_info == 1) {
                                 // 到主界面
                                 Intent intent = new Intent(LogoActivity.this, MainActivity.class);
                                 startActivity(intent);
-                            }else
-                            {
+                            } else {
                                 Intent intent = new Intent(LogoActivity.this, CompleteInformationActivity.class);
                                 startActivity(intent);
                             }
@@ -130,7 +135,7 @@ public class LogoActivity extends Activity {
             protected Map<String, String> getParams() {
 
                 // 从sp中读出账号密码
-                load();
+
                 //在这里设置需要post的参数
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("phone", mUsername);

@@ -129,7 +129,7 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             holder1.setDate(time_str);
 
-            holder1.setImg(img_head + list.get(position).getImg());
+            holder1.setImg(list.get(position).getImg());
             if (mOnItemClickLitener != null) {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

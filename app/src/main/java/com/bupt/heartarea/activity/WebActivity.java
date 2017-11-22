@@ -11,9 +11,6 @@ import android.widget.ImageView;
 
 import com.bupt.heartarea.R;
 
-//import butterknife.ButterKnife;
-//import butterknife.InjectView;
-
 public class WebActivity extends Activity {
 
     WebView webView;
@@ -24,8 +21,8 @@ public class WebActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_web);
-        webView= (WebView) findViewById(R.id.webView);
-        mIvBack= (ImageView) findViewById(R.id.id_iv_back_news);
+        webView = (WebView) findViewById(R.id.webView);
+        mIvBack = (ImageView) findViewById(R.id.id_iv_back_news);
 
         mIvBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,10 +31,19 @@ public class WebActivity extends Activity {
             }
         });
 
-        String url = getIntent().getStringExtra("url");
+        String message = getIntent().getStringExtra("message");
         WebSettings webSettings = webView.getSettings();
         webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
-        webView.loadUrl(url);
+
+        webView.getSettings().setJavaScriptEnabled(true);
+        // 加载HTML字符串进行显示
+        if (message != null) {
+            webView.loadDataWithBaseURL(null, message, "text/html", "utf-8", null);
+            webView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        }
+
+
+//        webView.loadUrl(message);
         webView.setOnKeyListener(new View.OnKeyListener() { // webview can
             // go back
             @Override

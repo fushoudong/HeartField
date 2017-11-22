@@ -32,6 +32,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bupt.heartarea.R;
 import com.bupt.heartarea.bean.ResponseBean;
+import com.bupt.heartarea.retrofit.HttpManager;
 import com.bupt.heartarea.utils.FileUtil;
 import com.bupt.heartarea.utils.GlobalData;
 import com.bupt.heartarea.utils.Tools;
@@ -90,6 +91,7 @@ public class MyInformationActivity extends Activity implements View.OnClickListe
     private static final String URL_CHANGE_INFORMATION = GlobalData.URL_HEAD + ":8080/detect3/ChangeServlet";
     // 上传用户头像的url
     private static final String URL_IMAGE_HEAD = GlobalData.URL_HEAD + ":8080/detect3/HeadIconServlet";
+    private static final String URL_BASE = "http://47.92.80.155:8080/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -196,14 +198,13 @@ public class MyInformationActivity extends Activity implements View.OnClickListe
                 // 拷贝头像
                 FileUtil.copyFile(oldpath, newpath);
                 // 向服务器上传头像
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        saveFileToServer(URL_IMAGE_HEAD, params, file);
-
-                    }
-                }).start();
-
+//                new Thread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        saveFileToServer(URL_IMAGE_HEAD, params, file);
+//                    }
+//                }).start();
+                postImageToServer(URL_BASE, "detect3/HeadIconServlet", "icon", file, params);
                 break;
             case R.id.id_rl_birthday:
                 showDatePickerDialog1();
@@ -586,6 +587,30 @@ public class MyInformationActivity extends Activity implements View.OnClickListe
 
         });
 
+    }
+
+
+    private void postImageToServer(String baseUrl, String suffixUrl, String key, File file, final HashMap<String, String> params) {
+//        retrofit2.Call<String> call = HttpManager.getInstance().postImage(baseUrl, suffixUrl, key, file, file.getName(), params);
+        retrofit2.Call<String> call = HttpManager.getInstance().postImage(baseUrl+suffixUrl,key, file, file.getName(), params);
+        call.enqueue(new retrofit2.Callback<String>() {
+            @Override
+            public void onResponse(retrofit2.Call<String> call, retrofit2.Response<String> response) {
+                if (response.isSuccessful()) {
+                    Log.i("response", response + "");
+                    String str = response.body();
+                    Log.i("saveFileToServer", response.message() + " , body " + str);
+
+                } else {
+                    Log.i("saveFileToServer", response.message() + " error : body " + response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(retrofit2.Call<String> call, Throwable t) {
+                Log.i("saveFileToServer", "onFailure()" + t.toString());
+            }
+        });
     }
 }
 

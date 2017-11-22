@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bupt.heartarea.utils.GlobalData;
 import com.google.gson.Gson;
 import com.bupt.heartarea.R;
 import com.bupt.heartarea.activity.WebActivity;
@@ -51,7 +52,6 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     //    List<HttpService.Result.TngouBean> dataBeanList = new ArrayList<>();
     private List<Result.DataBean> dataBeanList1 = new ArrayList<>();
     private RequestQueue mQueue;
-//    List<HttpService.Result1.TngouBean.DataBean> dataBeanList1=new ArrayList<>();
 
     public static NewsFragment newInstance(String type) {
         NewsFragment newsFragment = new NewsFragment();
@@ -65,65 +65,54 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        dataBeanList1 = new ArrayList<>(GlobalData.result.getData());
         mContext = getActivity();
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_news, container, false);
         }
         rv = (RecyclerView) view.findViewById(R.id.rv);
         fresh = (SwipeRefreshLayout) view.findViewById(R.id.fresh);
-//        ButterKnife.inject(this, view);
         fresh.setColorSchemeResources(R.color.main, android.R.color.holo_orange_light, android.R.color.holo_red_light, android.R.color.holo_green_light);
         fresh.setOnRefreshListener(this);
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         Bundle bundle = getArguments();
-//        type = bundle.getString("type");
-//        getData(type);
-        getData();
+        updateUi();
         Log.i(type, "onCreateView");
-
-
         return view;
     }
 
 
-    private void getData() {
-        mQueue = Volley.newRequestQueue(mContext);
-
-        StringRequest stringRequest = new StringRequest(URL_LIST, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("TAG 请求成功", response);
-                updateUi(response);
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                Log.d("TAG 请求失败", volleyError.getMessage());
-            }
-        }
-
-
-        );
-        mQueue.add(stringRequest);
-    }
+//    private void getData() {
+//        mQueue = Volley.newRequestQueue(mContext);
+//
+//        StringRequest stringRequest = new StringRequest(URL_LIST, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                Log.d("TAG 请求成功", response);
+//
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError volleyError) {
+//                Log.d("TAG 请求失败", volleyError.getMessage() + "");
+//            }
+//        }
+//
+//
+//        );
+//        mQueue.add(stringRequest);
+//    }
 
 
     /**
      * 更新数据
-     * @param response
      */
-    private void updateUi(String response) {
+    private void updateUi() {
         if (fresh != null) {
             fresh.setRefreshing(false);
         }
-        Gson gson = new Gson();
-        Result result = gson.fromJson(response, Result.class);
-//        if (result.getError_code() == 0) {
-
-//            Log.e("HttpService.Result",result.getResult().toString());
-        dataBeanList1 = result.getTngou();
+//        dataBeanList1 = GlobalData.result.getData();
         for (int i = 0; i < dataBeanList1.size(); i++) {
 
             System.out.println(dataBeanList1.get(i).toString());
@@ -134,41 +123,47 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             tv = (TextView) footView.findViewById(R.id.tv);
             pb = (ProgressBar) footView.findViewById(R.id.pb);
 
-
             adapter = new NewsRecyclerViewAdapter(getActivity(), dataBeanList1, footView);
             adapter.setOnItemClickLitener(new NewsRecyclerViewAdapter.OnItemClickLitener() {
                 @Override
                 public void onItemClick(View view, int position) {
-                    int id = dataBeanList1.get(position).getId();
-                    String url = URL_SHOW + "?id=" + id;
-                    StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            JSONObject jsonObject;
-                            try {
-                                jsonObject = new JSONObject(response);
-                                if (jsonObject.has("url")) {
-                                    String web_url = jsonObject.getString("url");
-                                    Intent intent = new Intent(getActivity(), WebActivity.class);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("url", web_url);
-                                    intent.putExtras(bundle);
-                                    startActivity(intent);
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+//                    int id = dataBeanList1.get(position).getId();
+//                    String url = URL_SHOW + "?id=" + id;
+//                    StringRequest stringRequest = new StringRequest(url, new Response.Listener<String>() {
+//                        @Override
+//                        public void onResponse(String response) {
+//                            JSONObject jsonObject;
+//                            try {
+//                                jsonObject = new JSONObject(response);
+//                                if (jsonObject.has("url")) {
+//                                    String web_url = jsonObject.getString("url");
+//                                    Intent intent = new Intent(getActivity(), WebActivity.class);
+//                                    Bundle bundle = new Bundle();
+//                                    bundle.putString("url", web_url);
+//                                    intent.putExtras(bundle);
+//                                    startActivity(intent);
+//                                }
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//
+//
+//                        }
+//                    }, new Response.ErrorListener() {
+//                        @Override
+//                        public void onErrorResponse(VolleyError volleyError) {
+//
+//                        }
+//                    });
+//                    mQueue.add(stringRequest);
 
 
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError volleyError) {
-
-                        }
-                    });
-                    mQueue.add(stringRequest);
-
+                    String message = dataBeanList1.get(position).getMessage();
+                    Intent intent = new Intent(getActivity(), WebActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("message", message);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
 
                 }
             });
@@ -193,7 +188,6 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                         }
 
                     }
-
 
                     @Override
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
@@ -235,6 +229,6 @@ public class NewsFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     @Override
     public void onRefresh() {
-        getData();
+        updateUi();
     }
 }

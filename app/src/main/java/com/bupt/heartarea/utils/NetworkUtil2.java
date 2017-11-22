@@ -86,52 +86,6 @@ public final class NetworkUtil2 {
         return flag;
     }
 
-    /**
-     * 获取活动连接的手机网络类型
-     *
-     * @param context 上下文
-     *
-     * @return 当前活动连接的手机网络类型
-     */
-    public static int getActiveNetworkType(Context context) {
-        NetworkInfo networkInfo = getActiveNetworkInfo(context);
 
-        boolean flag =
-                networkInfo != null && networkInfo.isAvailable()
-                        && networkInfo.getType() == ConnectivityManager.TYPE_MOBILE;
-        if (flag) {
-            String subTypeName = networkInfo.getSubtypeName();
-            int subType = networkInfo.getSubtype();
-            switch (subType) {
-                case TelephonyManager.NETWORK_TYPE_GPRS:
-                case TelephonyManager.NETWORK_TYPE_EDGE:
-                case TelephonyManager.NETWORK_TYPE_CDMA:
-                case TelephonyManager.NETWORK_TYPE_1xRTT:
-                case TelephonyManager.NETWORK_TYPE_IDEN:
-                    return Constants.NETWORKTYPE_2G;
-                case TelephonyManager.NETWORK_TYPE_UMTS:
-                case TelephonyManager.NETWORK_TYPE_EVDO_0:
-                case TelephonyManager.NETWORK_TYPE_EVDO_A:
-                case TelephonyManager.NETWORK_TYPE_HSDPA:
-                case TelephonyManager.NETWORK_TYPE_HSUPA:
-                case TelephonyManager.NETWORK_TYPE_HSPA:
-                case TelephonyManager.NETWORK_TYPE_EVDO_B:
-                case TelephonyManager.NETWORK_TYPE_EHRPD:
-                case TelephonyManager.NETWORK_TYPE_HSPAP:
-                    return Constants.NETWORKTYPE_3G;
-                case TelephonyManager.NETWORK_TYPE_LTE:
-                    return Constants.NETWORKTYPE_4G;
-                default:
-                    // http://baike.baidu.com/item/TD-SCDMA 中国移动 联通 电信 三种3G制式
-                    if (subTypeName.equalsIgnoreCase("TD-SCDMA") || subTypeName.equalsIgnoreCase("WCDMA")
-                            || subTypeName.equalsIgnoreCase("CDMA2000")) {
-                        return Constants.NETWORKTYPE_3G;
-                    }
-                    break;
-            }
-        }
-        return Integer.MIN_VALUE;
-
-    }
 
 }

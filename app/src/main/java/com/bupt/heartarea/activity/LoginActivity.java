@@ -1,13 +1,10 @@
 package com.bupt.heartarea.activity;
 
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,15 +27,6 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -244,6 +232,21 @@ public class LoginActivity extends Activity {
 //        objectRequest.setTag("lhdpost");
         //将请求添加到请求队列
         requestQueue.add(stringRequest);
+
+//        String url = URL_LOGIN + "?" + "phone=" + str_name + "&" + "tel=" + str_name + "&" + "password=" + str_pwd;
+//        Call<String> call = HttpManager.getInstance().get(url);
+//        call.enqueue(new Callback<String>() {
+//            @Override
+//            public void onResponse(Call<String> call, retrofit2.Response<String> response) {
+//                Log.d("LoginActivity", response.body());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<String> call, Throwable t) {
+//
+//            }
+//        });
+
     }
 
     private void saveAccountAndPwd() {

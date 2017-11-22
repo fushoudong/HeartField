@@ -7,7 +7,8 @@ import java.util.List;
  */
 public class Result {
     private int total;
-    private List<DataBean> tngou;
+    private int size;
+    private List<DataBean> data;
 
     public int getTotal() {
         return total;
@@ -17,26 +18,35 @@ public class Result {
         this.total = total;
     }
 
-    public List<DataBean> getTngou() {
-        return tngou;
+    public List<DataBean> getData() {
+        return data;
     }
 
-    public void setTngou(List<DataBean> tngou) {
-        this.tngou = tngou;
+    public void setData(List<DataBean> tngou) {
+        this.data = tngou;
+    }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "total=" + total +
+                ", size=" + size +
+                ", data=" + data +
+                '}';
     }
 
     public static class DataBean {
         private int count;
-//        private String description;
+        private String description;
         private int fcount;
         private int id;
         private String img;
         private String keywords;
-//        private String message;
+        private String message;
         private int rcount;
         private long time;
         private String title;
-        private int topclass;
+        private int loreclass;
 
         public int getCount() {
             return count;
@@ -46,13 +56,13 @@ public class Result {
             this.count = count;
         }
 
-//        public String getDescription() {
-//            return description;
-//        }
-//
-//        public void setDescription(String description) {
-//            this.description = description;
-//        }
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
 
         public int getFcount() {
             return fcount;
@@ -86,13 +96,13 @@ public class Result {
             this.keywords = keywords;
         }
 
-//        public String getMessage() {
-//            return message;
-//        }
-//
-//        public void setMessage(String message) {
-//            this.message = message;
-//        }
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
 
         public int getRcount() {
             return rcount;
@@ -118,28 +128,27 @@ public class Result {
             this.title = title;
         }
 
-        public int getTopclass() {
-            return topclass;
+        public int getLoreclass() {
+            return loreclass;
         }
 
-        public void setTopclass(int topclass) {
-            this.topclass = topclass;
+        public void setLoreclass(int loreclass) {
+            this.loreclass = loreclass;
         }
 
         @Override
         public String toString() {
             return "DataBean{" +
                     "count=" + count +
-//                    ", description='" + description + '\'' +
+                    ", description='" + description + '\'' +
                     ", fcount=" + fcount +
                     ", id=" + id +
                     ", img='" + img + '\'' +
                     ", keywords='" + keywords + '\'' +
-//                    ", message='" + message + '\'' +
+                    ", message='" + message + '\'' +
                     ", rcount=" + rcount +
                     ", time=" + time +
                     ", title='" + title + '\'' +
-                    ", topclass=" + topclass +
                     '}';
         }
     }
