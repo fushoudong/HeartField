@@ -505,6 +505,7 @@ public class MainPageFragment extends Fragment implements OnClickListener {
             intent.putExtras(bundle);
             startActivity(intent);
         }
+    }
 
 
     /**
