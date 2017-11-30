@@ -3,75 +3,237 @@
 
     <item
         is-multidex="false"
-        jar="/Users/baidu/Desktop/HeartArea/app/libs/gson-2.2.4.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
-        <dex dex="/Users/baidu/Desktop/HeartArea/app/build/intermediates/pre-dexed/debug/gson-2.2.4_699a5ec98343023eb9f009e412134195bf62f282.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/baidu/Desktop/HeartArea/app/libs/volley.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="4a94601db9bdfb7dc60efabb3dea91a0675f591d">
-        <dex dex="/Users/baidu/Desktop/HeartArea/app/build/intermediates/pre-dexed/debug/volley_3a059af6d5adfbb58005930a2204900dc0fa2baf.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/baidu/Desktop/HeartArea/DatePicker/build/intermediates/bundles/default/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="5729fdfea6f372c8c598dbb9d98661aa2ec189c0">
-        <dex dex="/Users/baidu/Desktop/HeartArea/app/build/intermediates/pre-dexed/debug/classes_d84a9951e239bd80bcc0986d9c0593333d58b992.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/baidu/Desktop/HeartArea/app/libs/lemon-hello.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="dddbf957878750ba80d7326e06f5556b882261f9">
-        <dex dex="/Users/baidu/Desktop/HeartArea/app/build/intermediates/pre-dexed/debug/lemon-hello_2a04d58a3e619c362063be7a0a2536a8e985f9a5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/baidu/Desktop/HeartArea/app/libs/lemon-bubble.jar"
+        jar="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/libs/lemon-bubble.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="7569cf0041f5578f8985c07f88bd1af32676e4f3">
-        <dex dex="/Users/baidu/Desktop/HeartArea/app/build/intermediates/pre-dexed/debug/lemon-bubble_116c3a20502f95a0b5accd0a024db8b25717ada5.jar" />
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/lemon-bubble_d55fb0e1d3455b996e93e53ceaabad6326a9a3ea.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/baidu/Desktop/HeartArea/app/libs/commons-math-2.2.jar"
+        jar="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/DatePicker/build/intermediates/bundles/default/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="4877b85d388275f994a5cfc7eceb73a8045d3006">
-        <dex dex="/Users/baidu/Desktop/HeartArea/app/build/intermediates/pre-dexed/debug/commons-math-2.2_6b5789e0371c1b43306e85d2e4c8399391ef8a85.jar" />
+        sha1="5729fdfea6f372c8c598dbb9d98661aa2ec189c0">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_bb8bf7a511b0c0f7a93c7dad278b24633c221682.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/baidu/Desktop/HeartArea/app/libs/achartengine-1.0.0.jar"
+        jar="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/libs/Jama-1.0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4e7b3b81770450a21b4295e27c2ccb802ab537e1">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/Jama-1.0.3_0fc9eaca04a781177845720f64a871ebaab30758.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Desktop/gradle-3.3/caches/modules-2/files-2.1/com.google.code.gson/gson/2.4/695b63d702f505b9b916e02272e3b6381bade7f/gson-2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/gson-2.4_020a599e926d6fcbdba53aa9e4c8587c18ef15b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/555220c3a8b4c89192667061fa3da55dc28c2990/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_e9e0a2d192c8e6228cb1407876e6bbf828f7ee32.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/68e086d35ac7086ac3ad4a8877e4fb08defa2dfa/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_bfb388ad92570f0869d91d4de7fa909768768e20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/9eedd98387cc078fce584a2e69082d8c9374dc47/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8a372c4191f80489770a231f7be4820b204b886a">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_a8b5ea42568d6f51ac32e483bd50ff248636b57c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/libs/achartengine-1.0.0.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="b2bb0af9f390c0edd4d7d95f613f38da3abe0144">
-        <dex dex="/Users/baidu/Desktop/HeartArea/app/build/intermediates/pre-dexed/debug/achartengine-1.0.0_59edaa055af74710c465f7e0216b920cdf21f2f3.jar" />
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/achartengine-1.0.0_f1d9c117b2f7c9a385febf8decf048057f7c4799.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/baidu/Desktop/HeartArea/hellocharts-library/build/intermediates/bundles/default/classes.jar"
+        jar="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/hellocharts-library/build/intermediates/bundles/default/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="bbd3e1bfa973b65072cb0dd15c925243180fe5c5">
-        <dex dex="/Users/baidu/Desktop/HeartArea/app/build/intermediates/pre-dexed/debug/classes_0239cfa8d9d69a81d23ed2102c7a74bf4643930d.jar" />
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_e7719023aea107f464dc1dfce1303d9834d5ae08.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/1709dd36ad5251c4c32b582b679c23fa98667aea/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_50cf1861b4e48d2a5b93030182ccaf6203db7b0c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/c0d6b9dce1a89e9a97778976a60aadd5a70f367e/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_5f15b5d3cd35d2d29abbc6e12001789d9360cdd5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/9c3b853640cc15c577be66cabf831ebacd74bbd3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_e15d59aabcc7f06bc2f1054da8bd250c112126e1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Desktop/gradle-3.3/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/glide-3.7.0_c2ba27d1f73d85d970aae06c938c4248cd90cf6e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Desktop/gradle-3.3/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/okio-1.13.0_2dd4b07b0bca69a8d6402e341eee6a42242eca36.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/d836ed9fcad9c6ff54ffbfaa0b512695d84de0ff/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_dd351f7d8d0cb861d6d61d7ab07b8a01ea05a68c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/libs/commons-math-2.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4877b85d388275f994a5cfc7eceb73a8045d3006">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/commons-math-2.2_95a0dab69a1a23008f3269e0bd7bc24054bbedd5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/libs/lemon-hello.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dddbf957878750ba80d7326e06f5556b882261f9">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/lemon-hello_31ac6ced2fdf11e80a762c16f4580296af7dabaa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Desktop/gradle-3.3/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.3.0/bcacde6a8ccedcc56c127403d26b76072fe6214d/retrofit-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bcacde6a8ccedcc56c127403d26b76072fe6214d">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/retrofit-2.3.0_c069d8afc4613339c6da96588dca1899b68a3123.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Desktop/gradle-3.3/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.8.0/5a11f020cce2d11eb71ba916700600e18c4547e7/okhttp-3.8.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/okhttp-3.8.0_930a4293ff9ea94c128fabd6b7c677d6d58f6f96.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/libs/volley.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4a94601db9bdfb7dc60efabb3dea91a0675f591d">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/volley_4df8a23b1a00789c9e6d1bc7d705be94dbd99e3f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/support-annotations-26.0.0-alpha1_5c4c20aeaf26dbb31ddf475264b4abef63611524.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/c04795c51ecc177bafe237f385f50d0b76a30b1f/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e921a3b8710529539fce1fef812f9626d8a6ecdb">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_fb58008b1d12c445e796b083c273f7b5f0f8209f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Desktop/gradle-3.3/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-scalars/2.0.0-beta4/f8685e25bc7f076913e2b51996cbc19ef7eb05df/converter-scalars-2.0.0-beta4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f8685e25bc7f076913e2b51996cbc19ef7eb05df">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/converter-scalars-2.0.0-beta4_653c3ade09280a078dd4617823ba8c832f6a5c1e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/10824e8f56e55487c8acee529f5d609abb6a978d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_5e367c4006c70657e64c6445e6390ca530b4c06e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/Desktop/gradle-3.3/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.0-beta4/de5935a367ba5e343e9df786ac8fc0c7d52b5f0c/converter-gson-2.0.0-beta4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="de5935a367ba5e343e9df786ac8fc0c7d52b5f0c">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/converter-gson-2.0.0-beta4_7901fd5a8718a8e40d32a0d6c5844cb7e9789c7a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/yuqing/.android/build-cache/ac74236aa65ef685cbc1e15a790437ec51e16ec1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="/Users/yuqing/Downloads/备份/workspace-school/NewHeartArea1/app/build/intermediates/pre-dexed/debug/classes_5dd4d095372ed4292745bca845524510cc7a5442.jar" />
     </item>
 
 </items>

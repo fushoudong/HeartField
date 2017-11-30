@@ -144,6 +144,11 @@ public class MeasureActivity extends Activity {
     private static final double AXISYMIN = 3.5;
     private static final int AXISXMAX = 6000 / INTERVAL;
 
+    // 采集多少个数据停止
+    private static final int STOP_COUNT = (int) (((float) AXISXMAX) * 2f);//   正式为3
+    // 圆形进度条总的数值
+    private static final int PROGRESS_STOP_COUNT = STOP_COUNT - 10; //
+
     private UserDataBean mUserDataBean = new UserDataBean();
     private List<Double> mDatas = new ArrayList<Double>();
     private List<Double> mRedDatas = new ArrayList<Double>();
@@ -214,10 +219,8 @@ public class MeasureActivity extends Activity {
         m_HeartDrawable.addDrawable(getResources().getDrawable(com.bupt.heartarea.R.drawable.ic_heart_small), false);
 
         m_ProgressWheel = (ProgressWheel) findViewById(com.bupt.heartarea.R.id.pw_heartrate);
-        // 用户使用
-        m_ProgressWheel.setMax(3 * AXISXMAX - 10);
-        // 收集数据使用
-//        m_ProgressWheel.setMax(4 * AXISXMAX - 10);
+        // 圆形进度条进度总数
+        m_ProgressWheel.setMax(PROGRESS_STOP_COUNT);
     }
 
     /**
@@ -285,10 +288,6 @@ public class MeasureActivity extends Activity {
 
     @Override
     protected void onStart() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            boolean res = checkPermissions();
-//            Log.i("相机权限", res+"");
-        }
 
         count = 0;
         handler = null;
@@ -309,7 +308,6 @@ public class MeasureActivity extends Activity {
 
     @Override
     protected void onStop() {
-
         super.onStop();
     }
 
@@ -554,7 +552,7 @@ public class MeasureActivity extends Activity {
                 // 收集数据用
 //                if (count == 4 * AXISXMAX) {
 //                     用户使用
-                if (count == 3 * AXISXMAX) {
+                if (count == STOP_COUNT) {
 
                     UserDataBean userDataBean = new UserDataBean();
                     userDataBean.setDatas(mDatas);
